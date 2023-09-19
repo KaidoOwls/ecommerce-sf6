@@ -2,18 +2,27 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Categories;
 use App\Entity\Plat;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-
-class PlatFixtures extends Fixture
+// ajouts des categories
+class PlatFixtures extends Fixture implements DependentFixtureInterface
 {
+
     public function __construct(private SluggerInterface $slugger){}
 
     public function load(ObjectManager $manager): void
     {
+
+        // Récupérez la référence à la catégorie correspondante depuis les fixtures des catégories
+        $fastFoodCategory = $this->getReference(CategoriesFixtures::FAST_FOOD_CATEGORY_REFERENCE);
+        $traditionalCategory = $this->getReference(CategoriesFixtures::TRADITIONAL_CATEGORY_REFERENCE);
+
+
         $plat1 = new Plat();
         $plat1->setLibelle("Wrap");
         $plat1->setDescription("Wrap au poulet");
@@ -21,8 +30,8 @@ class PlatFixtures extends Fixture
         $plat1->setImage('buffalo-chicken.webp');
         $plat1->setActive(1);
         $plat1->setSlug($this->slugger->slug($plat1->getLibelle())->lower());
+        $plat1->setCategorie($this->getReference('categorie'. 8)); // Liez le plat à la catégorie Fast Food
 
-    
 
 
         $plat2 = new Plat();
@@ -32,6 +41,7 @@ class PlatFixtures extends Fixture
         $plat2->setImage('cesar_salad.jpg');
         $plat2->setActive(1);
         $plat2->setSlug($this->slugger->slug($plat2->getLibelle())->lower());
+        $plat2->setCategorie($this->getReference('categorie'. 5)); 
 
 
 
@@ -42,6 +52,7 @@ class PlatFixtures extends Fixture
         $plat3->setImage('cheesburger.jpg');
         $plat3->setActive(1);
         $plat3->setSlug($this->slugger->slug($plat3->getLibelle())->lower());
+        $plat3->setCategorie($this->getReference('categorie'. 2)); 
 
 
         $plat4 = new Plat();
@@ -51,6 +62,8 @@ class PlatFixtures extends Fixture
         $plat4->setImage('courgettes_farcies.jpg');
         $plat4->setActive(1);
         $plat4->setSlug($this->slugger->slug($plat4->getLibelle())->lower());
+        $plat4->setCategorie($traditionalCategory); 
+
 
 
 
@@ -61,6 +74,7 @@ class PlatFixtures extends Fixture
         $plat5->setImage('Food-Name-433.jpeg');
         $plat5->setActive(1);
         $plat5->setSlug($this->slugger->slug($plat5->getLibelle())->lower());
+        $plat5->setCategorie($fastFoodCategory);
 
         $plat6 = new Plat();
         $plat6->setLibelle("Wrap");
@@ -69,6 +83,7 @@ class PlatFixtures extends Fixture
         $plat6->setImage('Food-Name-3461.jpg');
         $plat6->setActive(1);
         $plat6->setSlug($this->slugger->slug($plat6->getLibelle())->lower());
+        $plat6->setCategorie($fastFoodCategory);
 
         $plat7 = new Plat();
         $plat7->setLibelle("Hamburger");
@@ -77,6 +92,7 @@ class PlatFixtures extends Fixture
         $plat7->setImage('Food-Name-6340.jpg');
         $plat7->setActive(1);
         $plat7->setSlug($this->slugger->slug($plat7->getLibelle())->lower());
+        $plat7->setCategorie($fastFoodCategory);
 
         $plat8 = new Plat();
         $plat8->setLibelle("Pizza");
@@ -85,6 +101,7 @@ class PlatFixtures extends Fixture
         $plat8->setImage('Food-Name-8298.jpg');
         $plat8->setActive(1);
         $plat8->setSlug($this->slugger->slug($plat8->getLibelle())->lower());
+        $plat8->setCategorie($fastFoodCategory);
 
         $plat9 = new Plat();
         $plat9->setLibelle("Hambuger");
@@ -93,6 +110,7 @@ class PlatFixtures extends Fixture
         $plat9->setImage('hamburger.jpg');
         $plat9->setActive(1);
         $plat9->setSlug($this->slugger->slug($plat9->getLibelle())->lower());
+        $plat9->setCategorie($fastFoodCategory);
 
         $plat10= new Plat();
         $plat10->setLibelle("Veggie");
@@ -101,6 +119,7 @@ class PlatFixtures extends Fixture
         $plat10->setImage('lasagnes_viande.jpg');
         $plat10->setActive(1);
         $plat10->setSlug($this->slugger->slug($plat10->getLibelle())->lower());
+        $plat10->setCategorie($traditionalCategory); 
 
         $plat11= new Plat();
         $plat11->setLibelle("Veggie");
@@ -109,6 +128,7 @@ class PlatFixtures extends Fixture
         $plat11->setImage('Food-Name-3631.jpg');
         $plat11->setActive(1);
         $plat11->setSlug($this->slugger->slug($plat11->getLibelle())->lower());
+        $plat11->setCategorie($traditionalCategory); 
 
         $plat12= new Plat();
         $plat12->setLibelle("Pizza");
@@ -117,6 +137,7 @@ class PlatFixtures extends Fixture
         $plat12->setImage('pizza-margherita.jpg');
         $plat12->setActive(1);
         $plat12->setSlug($this->slugger->slug($plat12->getLibelle())->lower());
+        $plat12->setCategorie($fastFoodCategory);
 
         $plat13= new Plat();
         $plat13->setLibelle("Pizza");
@@ -125,6 +146,7 @@ class PlatFixtures extends Fixture
         $plat13->setImage('pizza-salmon.png');
         $plat13->setActive(1);
         $plat13->setSlug($this->slugger->slug($plat13->getLibelle())->lower());
+        $plat13->setCategorie($fastFoodCategory);
 
         $plat14 = new Plat();
         $plat14->setLibelle("Salade");
@@ -133,6 +155,7 @@ class PlatFixtures extends Fixture
         $plat14->setImage('salad1.png');
         $plat14->setActive(1);
         $plat14->setSlug($this->slugger->slug($plat14->getLibelle())->lower());
+        $plat14->setCategorie($traditionalCategory); 
 
         $plat15= new Plat();
         $plat15->setLibelle("Veggie");
@@ -141,6 +164,7 @@ class PlatFixtures extends Fixture
         $plat15->setImage('spaghetti-legumes.jpg');
         $plat15->setActive(1);
         $plat15->setSlug($this->slugger->slug($plat15->getLibelle())->lower());
+        $plat15->setCategorie($traditionalCategory); 
 
 
         $plat16= new Plat();
@@ -150,6 +174,7 @@ class PlatFixtures extends Fixture
         $plat16->setImage('tagliatelles-saumon.webp');
         $plat16->setActive(1);
         $plat16->setSlug($this->slugger->slug($plat16->getLibelle())->lower());
+        $plat16->setCategorie($traditionalCategory); 
 
 
 
@@ -175,5 +200,12 @@ class PlatFixtures extends Fixture
 
         $manager->flush();
 
+    }
+
+    public function getDependencies()
+    {
+       return [
+          CategoriesFixtures::class  
+       ];
     }
 }

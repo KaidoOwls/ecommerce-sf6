@@ -21,6 +21,28 @@ class Categories
     #[ORM\Column(length: 50)]
     private ?string $libelle = null;
 
+// test 
+
+#[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'categories')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
+    private $parent;
+
+    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
+    private $categories;
+
+    #[ORM\OneToMany(mappedBy: 'categories', targetEntity: Plat::class)]
+    private $plat;
+
+   public function __construct()
+    {
+       $this->categories = new ArrayCollection();
+       $this->plat = new ArrayCollection();
+    }
+//fin test
+
+    #[ORM\Column]
+    private ?int $categoryOrder = null;
+
     #[ORM\Column(length: 50)]
     private ?string $image = null;
 
@@ -30,10 +52,7 @@ class Categories
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Plat::class)]
     private Collection $plats;
 
-    public function __construct()
-    {
-        $this->plats = new ArrayCollection();
-    }
+   
 
     public function getId(): ?int
     {
@@ -51,6 +70,21 @@ class Categories
 
         return $this;
     }
+
+
+    public function getCategoryOrder(): ?int
+    {
+        return $this->categoryOrder;
+    }
+
+    public function setCategoryOrder(int $categoryOrder): self
+    {
+        $this->categoryOrder = $categoryOrder;
+
+        return $this;
+    }
+
+
 
     public function getImage(): ?string
     {
@@ -75,7 +109,66 @@ class Categories
 
         return $this;
     }
+// test
+public function getParent(): ?self
+{
+    return $this->parent;
+}
 
+public function setParent(?self $parent): self
+{
+    $this->parent = $parent;
+
+    return $this;
+}
+
+/**
+ * @return Collection|self[]
+ */
+public function getCategories(): Collection
+{
+    return $this->categories;
+}
+
+public function addCategory(self $category): self
+{
+    if (!$this->categories->contains($category)) {
+        $this->categories[] = $category;
+        $category->setParent($this);
+    }
+
+    return $this;
+}
+
+public function removeCategory(self $category): self
+{
+    if ($this->categories->removeElement($category)) {
+        // set the owning side to null (unless already changed)
+        if ($category->getParent() === $this) {
+            $category->setParent(null);
+        }
+    }
+
+    return $this;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//test
     /**
      * @return Collection<int, Plat>
      */
@@ -106,3 +199,4 @@ class Categories
         return $this;
     }
 }
+// test 
