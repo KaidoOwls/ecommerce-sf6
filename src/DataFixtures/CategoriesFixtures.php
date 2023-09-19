@@ -42,7 +42,7 @@ $manager->persist($parent);
                                 ->setImage('asian_food_cat.jpg')
                                 ->setParent($parent1)
                                 ->setCategoryOrder(2);
-                                
+                                $this->addReference('categorie1', $category1);
                         $manager->persist($category1);
 
 
@@ -63,6 +63,7 @@ $manager->persist($parent);
                                                                                 ->setImage('pasta_cat.jpg')
                                                                                 ->setParent($parent1)
                                                                                 ->setCategoryOrder(2);
+                                                                                $this->addReference('categorie3', $category3);
                                                                         $manager->persist($category3);
 
                                                 $category4 = new Categories();
@@ -72,6 +73,7 @@ $manager->persist($parent);
                                                         ->setImage('pizza_cat.jpg')
                                                         ->setParent($parent)
                                                         ->setCategoryOrder(1);
+                                                        $this->addReference('categorie4', $category4);
                                                 $manager->persist($category4);
 
                         $category5 = new Categories();
@@ -91,6 +93,7 @@ $manager->persist($parent);
                 ->setImage('sandwich_cat.jpg')
                 ->setParent($parent)
                 ->setCategoryOrder(1);
+                $this->addReference('categorie6', $category6);
         $manager->persist($category6);
 
                                 $category7 = new Categories();
@@ -100,6 +103,7 @@ $manager->persist($parent);
                                         ->setImage('veggie_cat.jpg')
                                         ->setParent($parent1)
                                         ->setCategoryOrder(2);
+                                        $this->addReference('categorie7', $category7);
                                 $manager->persist($category7);
 
                                                 $category8 = new Categories();
