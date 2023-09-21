@@ -1,5 +1,6 @@
 <h1>Activez votre compte</1>
-<p>Bonjour </p>
+<p>Bonjour {{ user.prenom}} </p>
 <p>Votre inscription sur le site The District est à valider en cliquant sur le lien ci-dessous :</p>
-<p><a href="">Lien</a></p>
+{#absolute url qui permet de generer un lien en rapport avec le site#}
+<p><a href="{{ absolute_url(path('verify_user', {token: token})) }}">{{ absolute_url(path('verify_user', {token: token})) }}</a></p>
 <p>Ce lien expirera dans 3 heures</p>
