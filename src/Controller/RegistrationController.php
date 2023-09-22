@@ -82,5 +82,5 @@ class RegistrationController extends AbstractController
             dd($jwt->isExpired($token));
 
         }
-        
+       
     }

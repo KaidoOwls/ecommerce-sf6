@@ -79,5 +79,7 @@ class JWTService
             
             return $payload['exp'] < $now->getTimestamp();
         }
+         // on vérifie le token 
+         public function check();
 }
 
