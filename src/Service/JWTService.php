@@ -69,6 +69,19 @@ class JWTService
     
                 return $payload;
             }
+            
+
+            // on récupère le header 
+            public function getHeader(string $token): array
+            {
+                // on démonte le token 
+                $array = explode('.', $token);
+    
+                // on décode le header
+                $header = json_decode(base64_decode($array[0]), true);
+    
+                return $header;
+            }
         
         // on vérifie si le token a expiré 
         public function isExpired(string $token): bool
@@ -79,7 +92,18 @@ class JWTService
             
             return $payload['exp'] < $now->getTimestamp();
         }
-         // on vérifie le token 
-         public function check();
-}
+         // on vérifie la signature du token 
+        public function check(string $token, string $secret)
+        {
+            // on récupère le header et le payload
+            $header = $this->getHeader($token);
+            $payload = $this->getPayload($token);
+
+            // on régénère un token  
+            $verifToken = $this->generate($header, $payload, $secret, 0);
+
+            return $token === $verifToken;
+            
+        }
+    }
 
