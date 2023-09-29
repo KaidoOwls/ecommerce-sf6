@@ -8,13 +8,13 @@
     <div class="col-12">
         <h1>Liste des plats de la catégorie {{category.libelle}}</h1>
     </div>
-     {% for plat in plat %}
+    {% for plat in plat %}
         <div class="col-3 mb-3">
             <article class="card h-100">
                 <div class="card-body">
                     <h2 class="card-title">{{ plat.libelle }}</h2>
                     <p class="card-text">{{plat.description}}</p>
-                    <a href="#" class="btn btn-primary">Voir les détails</a>
+                    <a href="{{ path('plats_details', {"slug": plat.slug})}}" class="btn btn-primary">Voir les détails</a>
                 </div>
             </article>
         </div>
