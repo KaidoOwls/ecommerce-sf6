@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails de{{ plat.libelle }}
+{% block title %}Détails de {{ plat.libelle }}
 {% endblock %}
 
 {% block body %}
@@ -9,9 +9,7 @@
 			<div class="col-12">
 				<h1>{{ plat.libelle }}<h1></div>
 					<div class="col-6">
-                            <div class="carousel-item active">
-									<img src="{{ asset('assets/images/images_the_district/food/')}}{{ plat.image}}" class="d-block w-100" alt="...">
-								</div>
+							<img src="{{ asset('assets/images/images_the_district/food/')}}{{ plat.image}}" class="d-block w-100" alt="...">
 					</div>
 					<div class="col-6">
 						<p>{{plat.description}}</p>

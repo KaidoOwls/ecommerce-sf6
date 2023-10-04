@@ -6,7 +6,8 @@ use App\Entity\Plat;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use App\Entity\Trait;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/plats', name: 'plats_')]
 class PlatController extends AbstractController

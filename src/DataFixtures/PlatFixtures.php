@@ -24,8 +24,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
 
 
         $plat1 = new Plat();
-        $plat1->setLibelle("Wrap");
-        $plat1->setDescription("Wrap au poulet");
+        $plat1->setLibelle("Wrap au poulet");
+        $plat1->setDescription("Wrap avec une sauce mafé");
         $plat1->setPrix("15.10");
         $plat1->setImage('buffalo-chicken.webp');
         $plat1->setActive(1);
@@ -35,7 +35,7 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
 
 
         $plat2 = new Plat();
-        $plat2->setLibelle("Salade");
+        $plat2->setLibelle("Salade au crouton");
         $plat2->setDescription("Salade au poulet accompagné de délicieux crouton intermarché");
         $plat2->setPrix("23.10");
         $plat2->setImage('cesar_salad.jpg');
@@ -46,7 +46,7 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
 
 
         $plat3 = new Plat();
-        $plat3->setLibelle("Hamburger");
+        $plat3->setLibelle("Hamburger au bacon");
         $plat3->setDescription("Hamburger au bacon Halal ");
         $plat3->setPrix("35.99");
         $plat3->setImage('cheesburger.jpg');
@@ -56,8 +56,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
 
 
         $plat4 = new Plat();
-        $plat4->setLibelle("Veggie");
-        $plat4->setDescription("Courgettes farcies");
+        $plat4->setLibelle("Courgette farcies ");
+        $plat4->setDescription("Courgettes farcies pas trés bonne");
         $plat4->setPrix("20.99");
         $plat4->setImage('courgettes_farcies.jpg');
         $plat4->setActive(1);
@@ -68,8 +68,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
 
 
         $plat5 = new Plat();
-        $plat5->setLibelle("Hamburger");
-        $plat5->setDescription("Classik Burger");
+        $plat5->setLibelle("Hamburger classik");
+        $plat5->setDescription("Classik Burger intermarché belek");
         $plat5->setPrix("15.00");
         $plat5->setImage('Food-Name-433.jpeg');
         $plat5->setActive(1);
@@ -78,8 +78,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
 
 
         $plat6 = new Plat();
-        $plat6->setLibelle("Wrap");
-        $plat6->setDescription("Classik Wrap");
+        $plat6->setLibelle("Wrap classik");
+        $plat6->setDescription("Classik Wrap de chez diouf");
         $plat6->setPrix("15.00");
         $plat6->setImage('Food-Name-3461.jpg');
         $plat6->setActive(1);
@@ -87,8 +87,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
         $plat6->setCategorie($this->getReference('categorie'. 8));
 
         $plat7 = new Plat();
-        $plat7->setLibelle("Hamburger");
-        $plat7->setDescription("Burger des champs");
+        $plat7->setLibelle("Hamburger des champs");
+        $plat7->setDescription("Burger des champs de Beauvais");
         $plat7->setPrix("20.00");
         $plat7->setImage('Food-Name-6340.jpg');
         $plat7->setActive(1);
@@ -96,8 +96,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
         $plat7->setCategorie($this->getReference('categorie'. 2)); 
 
         $plat8 = new Plat();
-        $plat8->setLibelle("Pizza");
-        $plat8->setDescription("Healty Pizza");
+        $plat8->setLibelle("Pizza healty");
+        $plat8->setDescription("Healty Pizza pour les gros");
         $plat8->setPrix("25.00");
         $plat8->setImage('Food-Name-8298.jpg');
         $plat8->setActive(1);
@@ -105,8 +105,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
         $plat8->setCategorie($this->getReference('categorie'. 4)); 
 
         $plat9 = new Plat();
-        $plat9->setLibelle("Hambuger");
-        $plat9->setDescription("Hamburger pas mal");
+        $plat9->setLibelle("Hambuger pas mal ");
+        $plat9->setDescription("Hamburger pas mal mais vraiment pas mal du tout");
         $plat9->setPrix("25.00");
         $plat9->setImage('hamburger.jpg');
         $plat9->setActive(1);
@@ -114,8 +114,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
         $plat9->setCategorie($this->getReference('categorie'. 2)); 
 
         $plat10= new Plat();
-        $plat10->setLibelle("Veggie");
-        $plat10->setDescription("Veggie Lasagne");
+        $plat10->setLibelle("lasagne");
+        $plat10->setDescription("Veggie Lasagne avec du poulet");
         $plat10->setPrix("40.00");
         $plat10->setImage('lasagnes_viande.jpg');
         $plat10->setActive(1);
@@ -123,8 +123,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
         $plat10->setCategorie($this->getReference('categorie'. 7));  
 
         $plat11= new Plat();
-        $plat11->setLibelle("Veggie");
-        $plat11->setDescription("Pain fromage");
+        $plat11->setLibelle("Pain fromage");
+        $plat11->setDescription("Pain fromage de chez Doullens");
         $plat11->setPrix("10.00");
         $plat11->setImage('Food-Name-3631.jpg');
         $plat11->setActive(1);
@@ -132,8 +132,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
         $plat11->setCategorie($this->getReference('categorie'. 7)); 
 
         $plat12= new Plat();
-        $plat12->setLibelle("Pizza");
-        $plat12->setDescription("Pizza Margherita");
+        $plat12->setLibelle("Pizza Margherita");
+        $plat12->setDescription("Pizza Margherita sauce babtou");
         $plat12->setPrix("25.00");
         $plat12->setImage('pizza-margherita.jpg');
         $plat12->setActive(1);
@@ -141,8 +141,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
         $plat12->setCategorie($this->getReference('categorie'. 4)); 
 
         $plat13= new Plat();
-        $plat13->setLibelle("Pizza");
-        $plat13->setDescription("Pizza Saumon");
+        $plat13->setLibelle("Pizza au saumon");
+        $plat13->setDescription("Pizza Saumon mais en vrai c'est de la truite");
         $plat13->setPrix("10.00");
         $plat13->setImage('pizza-salmon.png');
         $plat13->setActive(1);
@@ -150,8 +150,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
         $plat13->setCategorie($this->getReference('categorie'. 4)); 
 
         $plat14 = new Plat();
-        $plat14->setLibelle("Salade");
-        $plat14->setDescription("Salade discount");
+        $plat14->setLibelle("Salade discount ");
+        $plat14->setDescription("Salade discount en vrai c'est l'herbe de mon jardin");
         $plat14->setPrix("05.00");
         $plat14->setImage('salad1.png');
         $plat14->setActive(1);
@@ -159,8 +159,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
         $plat14->setCategorie($this->getReference('categorie'. 5));
 
         $plat15= new Plat();
-        $plat15->setLibelle("Veggie");
-        $plat15->setDescription("Spaghetti Legumes");
+        $plat15->setLibelle("Spaghetti Legumes");
+        $plat15->setDescription("Spaghetti Legumes sans viande");
         $plat15->setPrix("30.00");
         $plat15->setImage('spaghetti-legumes.jpg');
         $plat15->setActive(1);
@@ -169,8 +169,8 @@ class PlatFixtures extends Fixture implements DependentFixtureInterface
 
 
         $plat16= new Plat();
-        $plat16->setLibelle("Veggie");
-        $plat16->setDescription("Tagliatelles saumon");
+        $plat16->setLibelle("Tagliatelles saumon");
+        $plat16->setDescription("Tagliatelles saumon et la c'est vraiment du saumon");
         $plat16->setPrix("20.00");
         $plat16->setImage('tagliatelles-saumon.webp');
         $plat16->setActive(1);
