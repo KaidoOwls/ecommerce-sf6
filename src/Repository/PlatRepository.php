@@ -36,8 +36,8 @@ class PlatRepository extends ServiceEntityRepository
             ->setMaxResults($limit)
             ->setFirstResult(($page * $limit) - $limit);
         
-        $paginator = new Paginator($query);
-        $data = $paginator->getQuery()->getResult();
+            $paginator = new Paginator($query);
+            $data = $paginator->getQuery()->getResult();
 
         // on vérifie qu'on a des données 
         if(empty($data)){ 

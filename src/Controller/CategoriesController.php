@@ -22,7 +22,7 @@ class CategoriesController extends AbstractController
         $page = $request->query->getInt('page', 1);
 
 
-        // on va chercher la list des plats de la catégorie
+        // on va chercher la list des plats de la catégorie le chiffre à la fin permet de choisir combien on veut en voir
         $plat = $platRepository->findPlatPaginated($page, $category->getSlug(), 2);
 
         return $this->render('categories/list.html.twig', compact('category','plat'));
