@@ -35,13 +35,14 @@ class PlatsFormType extends AbstractType
                         ->where('c.parent IS NOT NULL')
                         ->orderBy('c.libelle', 'ASC');
                 }
-            ]);
+            ])
 
-        //    ->add('image', FileType::class, [
-        //        'label' => 'Image du plat',
-        //        'required' => false, // Le champ n'est pas obligatoire
-        //        'mapped' => false, // Ne mappez pas directement à l'entité, VichUploaderBundle s'en chargera
-         //   ]);
+            ->add('image', FileType::class, [
+                'label' => false,
+                'multiple' => true, 
+                'mapped' => false, // Ne mappez pas directement à l'entité
+                'required' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

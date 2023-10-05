@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Plat;
 use App\Form\PlatsFormType;
+use APP\Service\PictureService\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -22,7 +23,7 @@ class PlatsController extends AbstractController
     }
 
     #[Route('/ajout', name: 'add')]
-    public function add(Request $request, EntityManagerInterface $em, SluggerInterface $slugger): Response
+    public function add(Request $request, EntityManagerInterface $em, SluggerInterface $slugger, PictureService $pictureService): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
@@ -38,6 +39,20 @@ class PlatsController extends AbstractController
 
         // on vérifie si le formulaire est soumis et valide
         if($platForm->isSubmitted() && $platForm->isValid()){
+
+            // on récupère les images 
+            $images = $platForm->get('image')->getData();
+
+            foreach($images as $image){
+                // on définit le dossier de destination
+                $folder = 'plats';
+
+                // on appelle le service d'ajout 
+                $fichier = $pictureService->add($image, $folder, 300, 300);
+                die;
+            }
+
+
             // on génère le slug 
             $slug = $slugger->slug($plat->getLibelle());
             $plat->setSlug($slug);
