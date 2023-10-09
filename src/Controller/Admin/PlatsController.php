@@ -116,10 +116,11 @@ class PlatsController extends AbstractController
             return $this->redirectToRoute('admin_plats_index');
         }
 
-        //return $this->render('admin/plats/add.html.twig',[
-        //  'platForm' => $platForm->createView()
-        // ]);
-        return $this->renderForm('admin/plats/edit.html.twig', compact('platForm'));
+        return $this->render('admin/plats/edit.html.twig',[
+            'platForm' => $platForm->createView(),
+            'plat'=> $plat
+            ]);
+        //return $this->renderForm('admin/plats/edit.html.twig', compact('platForm'));
         // compact c'est égal à ['productFrom' => $productForm]        return $this->render('admin/plats/index.html.twig');
 
     }
