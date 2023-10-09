@@ -43,13 +43,17 @@ class PlatsController extends AbstractController
             // on récupère les images 
             $images = $platForm->get('image')->getData();
 
+            
+
             foreach($images as $image){
                 // on définit le dossier de destination
                 $folder = 'plats';
 
                 // on appelle le service d'ajout 
                 $fichier = $pictureService->add($image, $folder, 300, 300);
-                die;
+                
+                // On stocke le chemin de l'image dans l'entité Plat
+                $plat->setImage($fichier);
             }
 
 

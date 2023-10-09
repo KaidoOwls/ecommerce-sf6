@@ -1,24 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails de {{ plat.libelle }}
-{% endblock %}
+{% block title %}Détails de {{ plat.libelle }}{% endblock %}
 
 {% block body %}
-	<main class="container">
-		<section class="row">
-			<div class="col-12">
-				<h1>{{ plat.libelle }}<h1></div>
-					<div class="col-6">
-							<img src="{{ asset('assets/images/images_the_district/food/')}}{{ plat.image}}" class="d-block w-100" alt="...">
-					</div>
-					<div class="col-6">
-						<p>{{plat.description}}</p>
-						<p>Catégorie :
-							{{ plat.categorie.libelle}}</p>
-						<p>Prix :
-							{{ plat.prix }}
-							€</p>
-					</div>
-				</section>
-			</main>
-		{% endblock %}
+    <main class="container">
+        <section class="row">
+            <div class="col-12">
+                <h1>{{ plat.libelle }}</h1>
+            </div>
+            <div class="col-6">
+                {# Utilisez le chemin pour les images dans le répertoire "plats" ou "food" #}
+                <img src="{{ asset('assets/images/images_the_district/plats/' ~ plat.image) }}" class="d-block w-100" alt="...">
+				{#<img src="{{ asset('assets/images/images_the_district/food/' ~ plat.image) }}" class="d-block w-100" alt="...">#}
+            </div>
+
+            <div class="col-6">
+                <p>{{ plat.description }}</p>
+                <p>Catégorie : {{ plat.categorie.libelle }}</p>
+                <p>Prix : {{ plat.prix }} €</p>
+            </div>
+        </section>
+    </main>
+{% endblock %}
