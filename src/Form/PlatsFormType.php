@@ -10,6 +10,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Validator\Constraints\All;
+use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Validator\Constraints\Positive;
 
 class PlatsFormType extends AbstractType
 {
@@ -20,7 +24,13 @@ class PlatsFormType extends AbstractType
                 'label' => 'Nom'
             ])
             ->add('description')
-            ->add('prix')
+            ->add('prix', MoneyType::class, options:[
+                'constraints' => [
+                    new Positive(
+                        message:'Le prix ne peut être négatif'
+                    )
+                ]
+            ])
             ->add('active', options:[
                 'label' => 'Stock'
             ])
@@ -37,11 +47,19 @@ class PlatsFormType extends AbstractType
                 }
             ])
 
-            ->add('image', FileType::class, [
-                'label' => false,
-                'multiple' => true, 
-                'mapped' => false, // Ne mappez pas directement à l'entité
-                'required' => false
+        ->add('image', FileType::class, [
+            'label' => false,
+            'multiple' => true, 
+            'mapped' => false, // Ne mappez pas directement à l'entité
+            'required' => false,
+            'constraints' => [
+                new All(
+                    new Image([
+                        'maxWidth' => 1280,
+                        'maxWidthMessage' => 'L\'image doit faire {{ max_width }} pixels de large au maximum'
+                    ])
+                )
+                ]
             ]);
     }
 

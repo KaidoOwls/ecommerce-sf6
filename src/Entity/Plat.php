@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Detail;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PlatRepository::class)]
 class Plat
@@ -22,6 +23,14 @@ class Plat
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message:'Le nom du porduit ne peut pas être vide')]
+    #[Assert\Length(
+        min : 8,
+        max: 200,
+        minMessage: 'Le titre doit faire au moins {{ limit }} caractères',
+        maxMessage: 'Le titre ne doit pas faire plus de {{ limit }} caractères'
+
+    )]
     private ?string $libelle = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
