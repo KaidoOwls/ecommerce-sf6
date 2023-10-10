@@ -1,7 +1,57 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block title %}Administration des utilisateurs{% endblock %}
+{% block title %}Listes des utilisateurs{% endblock %}
 
 {% block body %}
-    <h1>Administration des utilisateurs<h1>
+    <div class="container">
+        <div class="row">
+            {% include "_partials/_adminnav.html.twig" %}
+            <main class="col-9 border border-light bg-white p-2">
+                <h1>Listes des utilisateurs</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th>ID</th>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Rôles</th>
+                        <th>Vérifié</th>
+                        <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.nom }}</td>
+                                <td>{{user.prenom}}</td>
+                                <td>{{ user.email }}</td>
+                                <td>
+                                    {% for role in user.roles %}
+                                        {% if role == "ROLE_ADMIN" %}
+                                            {% set name = 'Administrateur' %}
+                                        {% elseif role == "ROLE_CHEF" %}
+                                            {% set name = 'Admin plats' %}
+                                        {% else %}
+                                            {% set name = 'Membre' %}
+                                        {% endif %} 
+                                        <span class="badge bg-secondary">{{ name }}</span>
+                                    {% endfor %}
+                                    
+                                </td>
+                                <td>{{ user.isVerified }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary">Modifier</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+
+
+
 {% endblock %}

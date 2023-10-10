@@ -1,7 +1,46 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block title %}Administration des plats{% endblock %}
+{% block title %}Listes des plats{% endblock %}
 
 {% block body %}
-    <h1>Administration des plats<h1>
+    <div class="container">
+        <div class="row">
+            {% include "_partials/_adminnav.html.twig" %}
+            <main class="col-9 border border-light bg-white p-2">
+                <h1>Listes des plats</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th>ID</th>
+                        <th>Photo</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Active</th>
+                        <th>Catégorie</th>
+                        <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for plat in plats %}
+                            <tr>
+                                <td>{{ plat.id }}</td>
+                                <td>{{ plat.libelle }}</td>
+                                <td>{{plat.image}}</td>
+                                {#<td><img src="{{ asset('assets/images/images_the_district/plats/' ~ plat.image)}}" alt="{{ plat.libelle }}" class="img-thumbnail"></td>#}
+                                <td>{{ plat.prix }}</td>
+                                <td>{{ plat.active }}</td>
+                                <td>{{ plat.categorie.libelle }}</td>
+                                <td>
+                                    <a href="{{ path('admin_plats_edit',{id: plat.id}) }}" class="btn btn-primary">Modifier</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+
+
+
 {% endblock %}
