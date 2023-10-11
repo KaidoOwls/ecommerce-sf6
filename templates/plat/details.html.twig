@@ -18,6 +18,11 @@
                 <p>{{ plat.description }}</p>
                 <p>Catégorie : {{ plat.categorie.libelle }}</p>
                 <p>Prix : {{ plat.prix }} €</p>
+                  {% if plat.active > 0 %}
+                    <a href="{{ path('cart_add', {id: plat.id}) }}" class="btn btn-success">Ajouter au panier</a>
+                {% else %}
+                    <p class="text-danger">Temporairement en rupture de stock</p>
+                {% endif %}
             </div>
         </section>
     </main>
